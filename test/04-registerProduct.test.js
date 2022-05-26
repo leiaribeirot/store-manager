@@ -24,7 +24,7 @@ describe("04-registerProduct", () => {
     await connection.end();
   });
 
-  describe.skip("4 - Crie um endpoint para o cadastro de produtos", () => {
+  describe("4 - Crie um endpoint para o cadastro de produtos", () => {
     it("Será validado que não é possível criar um produto com o mesmo nome de outro já existente", async () => {
       await frisby
         .post(`${url}/products/`, {

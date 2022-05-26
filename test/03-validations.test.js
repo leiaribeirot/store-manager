@@ -15,10 +15,10 @@ jest.mock('mysql2/promise', () => {
 		createConnection: connectionMock, createPoolCluster: connectionMock
 	}
 });
-describe.skip("03-validations", () => {
+describe("03-validations", () => {
 
 	describe("3 - Realiza validações nos produtos e nas vendas", () => {
-		it.skip("quando cadastrar um produto será validado que o campo name está presente no body", async () => {
+		it("quando cadastrar um produto será validado que o campo name está presente no body", async () => {
 			await request
 				.post(`/products`,)
 				.send({
@@ -32,7 +32,7 @@ describe.skip("03-validations", () => {
 				});
 		});
 
-		it.skip("quando cadastrar um produto será validado que o campo name possui 5 ou mais caracteres", async () => {
+		it("quando cadastrar um produto será validado que o campo name possui 5 ou mais caracteres", async () => {
 			await request
 				.post('/products',)
 				.send({
@@ -48,7 +48,7 @@ describe.skip("03-validations", () => {
 				});
 		});
 
-		it.skip("quando cadastrar um produto será validado que o campo quantity está presente no body", async () => {
+		it("quando cadastrar um produto será validado que o campo quantity está presente no body", async () => {
 			await request
 				.post('/products/',)
 				.send({
@@ -63,7 +63,7 @@ describe.skip("03-validations", () => {
 				});
 		});
 
-		it.skip("quando cadastrar um produto será validado que o campo quantity é um número inteiro maior que zero", async () => {
+		it("quando cadastrar um produto será validado que o campo quantity é um número inteiro maior que zero", async () => {
 			await request
 				.post('/products',)
 				.send({
@@ -81,7 +81,7 @@ describe.skip("03-validations", () => {
 	});
 
 	// atualizações dos produtos
-	it.skip("quando atualizar um produto será validado que o campo name possui 5 ou mais caracteres", async () => {
+	it("quando atualizar um produto será validado que o campo name possui 5 ou mais caracteres", async () => {
 		await request
 			.put('/products/1',)
 			.send({
@@ -97,7 +97,7 @@ describe.skip("03-validations", () => {
 			});
 	});
 
-	it.skip("quando atualizar um produto será validado que o campo quantity está presente no body", async () => {
+	it("quando atualizar um produto será validado que o campo quantity está presente no body", async () => {
 		await request
 			.put('/products/1',)
 			.send({
@@ -112,7 +112,7 @@ describe.skip("03-validations", () => {
 			});
 	});
 
-	it.skip("quando atualizar um produto será validado que o quantity é um número inteiro maior que zero", async () => {
+	it("quando atualizar um produto será validado que o quantity é um número inteiro maior que zero", async () => {
 		await request
 			.put('/products/1',)
 			.send({

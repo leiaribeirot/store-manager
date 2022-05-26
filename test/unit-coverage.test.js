@@ -66,7 +66,7 @@ const executeTests = async () => {
   }
 };
 
-describe.skip('Testes das camadas Model, Service e Controller', () => {
+describe('Testes das camadas Model, Service e Controller', () => {
   let coverageResults;
   let coverageResultsArr;
 
@@ -81,7 +81,7 @@ describe.skip('Testes das camadas Model, Service e Controller', () => {
      await exec('rm -rf coverage .nyc_output');
   });
   
-  describe.skip('1 - Escreva testes para cobrir 35% das camadas da sua aplicação', () => {
+  describe('1 - Escreva testes para cobrir 35% das camadas da sua aplicação', () => {
 
     it('Será validado que cobertura total das linhas dos arquivos nas pastas `models`, `services` e `controllers` é maior ou igual a 35%', async () => {
 
@@ -111,7 +111,7 @@ describe.skip('Testes das camadas Model, Service e Controller', () => {
     });
   });
   
-  describe.skip('9 - Escreva testes para cobrir 40% das camadas da sua aplicação', () => {
+  describe('9 - Escreva testes para cobrir 40% das camadas da sua aplicação', () => {
   
     it('Será validado que cobertura total das linhas dos arquivos nas pastas `models`, `services` e `controllers` é maior ou igual a 40%', async () => {
       expect(coverageResults.total.lines.pct).toBeGreaterThanOrEqual(0);
@@ -138,7 +138,7 @@ describe.skip('Testes das camadas Model, Service e Controller', () => {
     });
   });
   
-  describe.skip('13 - Escreva testes para cobrir 50% das camadas da sua aplicação', () => {
+  describe('13 - Escreva testes para cobrir 50% das camadas da sua aplicação', () => {
   
     it('Será validado que cobertura total das linhas dos arquivos nas pastas `models`, `services` e `controllers` é maior ou igual a 50%', async () => {
 
