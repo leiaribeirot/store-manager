@@ -1,24 +1,19 @@
 const salesModel = require('../models/SalesModel');
-
-const salesCamelCase = (sale) => {
-    const { sale_id: saleId, procuct_id: productId, quantity, date } = sale;
-    const saleCamelCase = { saleId, productId, quantity, date };
-    return saleCamelCase;
-};
+const { salesAllCamelCase } = require('../utils/salesUtil');
 
 const getServiceAll = async () => {
     const [sales] = await salesModel.getSalesAll();
-    const formatSalesAll = sales.map(salesCamelCase);
+    const formatSalesAll = sales.map(salesAllCamelCase);
     return formatSalesAll;
 };
 
-const getSalesById = async (id) => {
+const getServiceById = async (id) => {
     const [sales] = await salesModel.getSalesById(id);
-    const formatSalesById = sales.map(salesCamelCase);
+    const formatSalesById = sales.map(salesAllCamelCase);
     return formatSalesById;
 };
 
 module.exports = {
     getServiceAll,
-    getSalesById,
+    getServiceById,
 };

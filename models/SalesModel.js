@@ -1,14 +1,18 @@
 const connection = require('../db/connection');
 
-const getSalestAll = () => connection.execute(
-    'SELECT * FROM sales_products ORDER BY sale_id, product_id',
+const getSalesAll = () => connection.execute(
+    `SELECT s.id, s.date, sp.product_id, sp.quantity FROM sales AS s 
+        INNER JOIN sales_products AS sp
+        ON s.id = sp.sale_id;`,
 );
 
 const getSalesById = (id) => connection.execute(
-    'SELECT * FROM sales_products WHERE sales_id = ?', [id],
+    `SELECT s.date, sp.product_id, sp.quantity FROM sales AS s 
+        INNER JOIN sales_products AS sp 
+        ON s.id = sp.sale_id WHERE s.id = ?;`, [id],
 );
 
 module.exports = {
-    getSalestAll,
+    getSalesAll,
     getSalesById,
 };
