@@ -8,10 +8,17 @@ const salesCamelCase = (sale) => {
 
 const getServiceAll = async () => {
     const [sales] = await salesModel.getSalesAll();
-    const formatSales = sales.map(salesCamelCase);
-    return formatSales;
+    const formatSalesAll = sales.map(salesCamelCase);
+    return formatSalesAll;
+};
+
+const getSalesById = async (id) => {
+    const [sales] = await salesModel.getSalesById(id);
+    const formatSalesById = sales.map(salesCamelCase);
+    return formatSalesById;
 };
 
 module.exports = {
     getServiceAll,
+    getSalesById,
 };
