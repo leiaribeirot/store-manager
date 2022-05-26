@@ -10,7 +10,7 @@ const getServiceById = async (id) => {
     return products;
 };
 
-exports.productModel = {
+module.exports = {
     getServiceAll,
     getServiceById,
 };
