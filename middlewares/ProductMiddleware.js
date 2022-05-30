@@ -14,6 +14,23 @@ const validateName = (req, res, next) => {
     next();
 };
 
+const validateQuantity = (req, res, next) => {
+    const { quantity } = req.body;
+
+    if (!quantity) {
+        return res.status(StatusCodes.BAD_REQUEST).json({ message: '"quantity" is required' });
+    }
+
+    if (quantity <= 0) {
+        return res.status(StatusCodes.UNPROCESSABLE_ENTITY).json(
+            { message: '"quantity" must be greater than or equal to 1' },
+        );
+    }
+
+    next();
+};
+
 module.exports = {
     validateName,
+    validateQuantity,
 };
