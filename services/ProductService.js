@@ -15,7 +15,7 @@ const createProduct = async ({ name, quantity }) => {
 
     if (product.length) return { error: 'Product already exists' };
 
-    const [newProduct] = await productModel.createProduct({ name, quantity });
+    const [newProduct] = await productModel.createProduct(name, quantity);
     return { id: newProduct.insertId, name, quantity };
 };
 
