@@ -12,7 +12,10 @@ const getSalesById = (id) => connection.execute(
         ON s.id = sp.sale_id WHERE s.id = ?;`, [id],
 );
 
+const createSales = () => connection.execute('INSERT INTO sales () VALUES ()');
+
 module.exports = {
     getSalesAll,
     getSalesById,
+    createSales,
 };
