@@ -9,9 +9,13 @@ const getByName = (name) => connection.execute('SELECT * FROM products WHERE nam
 const createProduct = (name, quantity) => 
 connection.execute('INSERT INTO products (name, quantity) VALUES (?, ?)', [name, quantity]);
 
+const updateProduct = (name, quantity, id) => 
+connection.execute('UPDATE products SET name = ?, quantity = ? WHERE id = ?', [name, quantity, id]);
+
 module.exports = { 
     getProductAll, 
     getProductById,
     getByName,
     createProduct,
+    updateProduct,
  };
