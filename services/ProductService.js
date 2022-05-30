@@ -10,7 +10,17 @@ const getServiceById = async (id) => {
     return products;
 };
 
+const createProduct = async ({ name, quantity }) => {
+    const [product] = await productModel.getByName(name);
+
+    if (product.length) return { error: 'Product already exists' };
+
+    const [newProduct] = await productModel.createProduct({ name, quantity });
+    return { id: newProduct.insertId, name, quantity };
+};
+
 module.exports = {
     getServiceAll,
     getServiceById,
+    createProduct,
 };

@@ -6,12 +6,12 @@ const getProductById = (id) => connection.execute('SELECT * FROM products WHERE 
 
 const getByName = (name) => connection.execute('SELECT * FROM products WHERE name = ?', [name]);
 
-const creatProduct = (name, quantity) => 
+const createProduct = (name, quantity) => 
 connection.execute('INSERT INTO products (name, quantity) VALUES (?, ?)', [name, quantity]);
 
 module.exports = { 
     getProductAll, 
     getProductById,
     getByName,
-    creatProduct,
+    createProduct,
  };
