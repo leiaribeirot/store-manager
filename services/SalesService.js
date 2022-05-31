@@ -13,7 +13,13 @@ const getServiceById = async (id) => {
     return formatSalesById;
 };
 
+const createSales = async (sales) => {
+    const [newSales] = await salesModel.createSales(sales);
+    
+};
+
 module.exports = {
     getServiceAll,
     getServiceById,
+    createSales,
 };
