@@ -17,7 +17,7 @@ const validateName = (req, res, next) => {
 const validateQuantity = (req, res, next) => {
     const { quantity } = req.body;
 
-    if (!quantity) {
+    if (!quantity && quantity !== 0) {
         return res.status(StatusCodes.BAD_REQUEST).json({ message: '"quantity" is required' });
     }
 

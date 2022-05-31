@@ -11,7 +11,7 @@ connection.execute('INSERT INTO products (name, quantity) VALUES (?, ?)', [name,
 
 const updateProduct = (name, quantity, id) => 
 connection.execute('UPDATE products SET name = ?, quantity = ? WHERE id = ?', [name, quantity, id]);
-
+    
 module.exports = { 
     getProductAll, 
     getProductById,
