@@ -25,7 +25,7 @@ const updateProduct = async ({ id, name, quantity }) => {
 };
 
 const deleteProduct = async (id) => {
-    const [product] = productModel.deleteProduct(id);
+    const [product] = await productModel.deleteProduct(id);
     return product;
 };
 

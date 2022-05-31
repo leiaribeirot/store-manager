@@ -12,7 +12,7 @@ connection.execute('INSERT INTO products (name, quantity) VALUES (?, ?)', [name,
 const updateProduct = (name, quantity, id) => 
 connection.execute('UPDATE products SET name = ?, quantity = ? WHERE id = ?', [name, quantity, id]);
 
-const deleteProduct = (id) => connection.execute('DELETE FROM products WHERE id =?', [id]);
+const deleteProduct = (id) => connection.execute('DELETE FROM products WHERE id = ?', [id]);
     
 module.exports = { 
     getProductAll, 
