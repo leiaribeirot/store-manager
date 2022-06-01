@@ -30,6 +30,10 @@ const updateSales = async (req, res, _next) => {
     
     const updateSale = await salesService.updateSales(id, req.body);
 
+    if (!updateSale) {
+        return res.status(StatusCodes.NOT_FOUND).json({ message: 'Sale not found' });
+    }
+
     res.status(StatusCodes.OK).json(updateSale);
 };
 
