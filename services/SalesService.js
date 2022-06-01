@@ -14,8 +14,16 @@ const getServiceById = async (id) => {
 };
 
 const createSales = async (sales) => {
-    const [newSales] = await salesModel.createSales(sales);
-    
+    const [sale] = await salesModel.insertSales();
+    const { insertId } = sale;
+
+    await Promise.all(sales.map(({ quantity, productId }) => 
+    salesModel.createSales(quantity, productId, insertId)));
+
+    return {
+        id: insertId,
+        itemsSold: sales,
+    };
 };
 
 module.exports = {
