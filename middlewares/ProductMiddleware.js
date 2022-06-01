@@ -30,7 +30,20 @@ const validateQuantity = (req, res, next) => {
     next();
 };
 
+const validateProductId = (req, res, next) => {
+    const productNotId = req.body.some((sale) => {
+        const { productId } = sale;
+        return !productId && productId !== 0;
+    });
+
+    if (productNotId) {
+        return res.status(StatusCodes.BAD_REQUEST).json({ message: '"productId" is required' });
+    }
+    next();
+};
+
 module.exports = {
     validateName,
     validateQuantity,
+    validateProductId,
 };
