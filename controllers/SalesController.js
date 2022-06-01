@@ -18,11 +18,24 @@ const getById = async (req, res) => {
 const createSales = async (req, res, _next) => {
     const sales = await salesService.createSales(req.body);
 
+    if (!sales) {
+        return res.status(StatusCodes.NOT_FOUND).json({ message: 'Sale not found' });
+    }
+
     res.status(StatusCodes.CREATED).json(sales);
+};
+
+const updateSales = async (req, res, _next) => {
+    const { id } = req.params;
+    
+    const updateSale = await salesService.updateSales(id, req.body);
+
+    res.status(StatusCodes.OK).json(updateSale);
 };
 
 module.exports = {
     getAll,
     getById,
     createSales,
+    updateSales,
 };

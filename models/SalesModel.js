@@ -18,9 +18,14 @@ const createSales = (quantity, productId, saleId) =>
 connection.execute('INSERT INTO sales_products (sale_id, product_id, quantity) VALUES (?, ?, ?)', 
 [saleId, productId, quantity]);
 
+const updateSales = (saleId, productId, quantity) => 
+connection.execute('UPDATE sales_products SET quantity = ? WHERE sale_id = ? AND product_id = ?',
+[quantity, saleId, productId]);
+
 module.exports = {
     getSalesAll,
     getSalesById,
     createSales,
     insertSales,
+    updateSales,
 };

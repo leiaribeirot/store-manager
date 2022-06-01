@@ -26,8 +26,20 @@ const createSales = async (sales) => {
     };
 };
 
+const updateSales = async (id, product) => {
+    const { productId, quantity } = product[0];
+
+    await salesModel.updateSales(id, productId, quantity);
+  
+    return {
+      saleId: id,
+      itemUpdated: product,
+    };
+};
+
 module.exports = {
     getServiceAll,
     getServiceById,
     createSales,
+    updateSales,
 };
