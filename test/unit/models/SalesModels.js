@@ -6,7 +6,7 @@ const SalesModel = require('../../../models/SalesModel');
 const mockSales = [{id: 1, date: '2022-05-26T17:35:23.000Z', product_id: 1, quantity: 5 }];
 const mockSalesId = [{date: '2022-05-26T17:35:23.000Z', product_id: 1, quantity: 5 }];
 
-describe.only('Sales Model', () => {
+describe('Sales Model', () => {
 
     describe('Se a função getSalesAll quando executada', () =>{
 

@@ -13,7 +13,7 @@ const getServiceById = async (id) => {
 const createProduct = async ({ name, quantity }) => {
     const [product] = await productModel.getByName(name);
 
-    if (product.length) return { error: 'Product already exists' };
+    if (product.length) return false;
 
     const [newProduct] = await productModel.createProduct(name, quantity);
     return { id: newProduct.insertId, name, quantity };

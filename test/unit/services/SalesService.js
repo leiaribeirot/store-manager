@@ -8,7 +8,7 @@ const sales = [{ id: 1, date: '2022-06-03T17:36:22.000Z', product_id: 1, quantit
 const salesById = [{ date: '2022-06-03T17:36:22.000Z', product_id: 1, quantity: 5 }]
 const productsToSale = [{ productId: 1, quantity: 2 }];
 
-describe.only('Sales Service', () => {
+describe('Sales Service', () => {
 
     describe('Se a função getServiceAll quando executada',  () => {
         before(() => {

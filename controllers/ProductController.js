@@ -1,8 +1,8 @@
 const { StatusCodes } = require('http-status-codes');
 const productService = require('../services/ProductService');
 
-const getAll = async (_req, res) => {
-    const products = await productService.getServiceAll();
+const getAll = async (req, res) => {
+    const [products] = await productService.getServiceAll();
     res.status(StatusCodes.OK).json(products);
 };
 
@@ -20,7 +20,7 @@ const getById = async (req, res, _next) => {
 const createProduct = async (req, res, _next) => {
     const data = await productService.createProduct(req.body);
 
-    if (data.error) {
+    if (!data) {
     return res.status(StatusCodes.CONFLICT).json({ message: 'Product already exists' });
     }
 
