@@ -82,12 +82,12 @@ describe('ProductModel', () => {
             connection.execute.restore();
         });
 
-        it('retorna uma array', async () => {
+        it('retorna um array', async () => {
             const response = await ProductModel.createProduct('Martelo de Thor', 10);
             expect(response).to.be.an('array');
         });
 
-        it('verifica se na posição 0 do array contém a propriedade "insetedId"', async () => {
+        it('verifica se na posição 0 do array contém a propriedade "insertId"', async () => {
             const response = await ProductModel.createProduct('Martelo de Thor', 10);
             expect(response).to.be.an('array');
             expect(response[0]).to.haveOwnProperty('insertId');
@@ -135,6 +135,7 @@ describe('ProductModel', () => {
             const response = await ProductModel.deleteProduct(1, 'Martelo de Thor', 10);
             expect(response).to.be.an('array');
             expect(response[0]).to.haveOwnProperty('update');
+            expect(response[0].update).to.equal(1);
         });
     });
 });
