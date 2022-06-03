@@ -108,7 +108,7 @@ describe('Sales Model', () => {
             connection.execute.restore();
         });
 
-        it('retona uma array', async () => {
+        it('retorna uma array', async () => {
             const response = await SalesModel.updateSales();
             expect(response).to.be.an('array');
         });

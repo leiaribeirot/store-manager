@@ -126,7 +126,7 @@ describe('ProductModel', () => {
             connection.execute.restore();
         });
 
-        it('retona uma array', async () => {
+        it('retorna uma array', async () => {
             const response = await ProductModel.deleteProduct(1, 'Martelo de Thor', 10);
             expect(response).to.be.an('array');
         });
