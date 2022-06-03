@@ -4,7 +4,7 @@ const connection = require('../../../db/connection');
 const SalesService = require('../../../services/SalesService');
 const SalesModel = require('../../../models/SalesModel');
 
-const sales = [{ id: 1, date: '2022-06-03T17:36:22.000Z', product_id: 1, quantity: 5,}]
+const sales = [{ id: 1, date: '2022-06-03T17:36:22.000Z', product_id: 1, quantity: 5 }]
 const salesById = [{ date: '2022-06-03T17:36:22.000Z', product_id: 1, quantity: 5 }]
 const productsToSale = [{ productId: 1, quantity: 2 }];
 
@@ -22,8 +22,8 @@ describe('Sales Service', () => {
         it('nomaliza o array com todas as vendas', async () => {
             const response = await SalesService.getServiceAll();
             expect(response).to.be.an('array');
-            expect(response).to.deep.equal(sales.map(SalesService.salesAllCamelCase))
-        })
+            expect(response).to.deep.equal(sales.map(SalesService.salesAllCamelCase));
+        });
     });
 
     describe('Se a função getServiceAll quando executada',  () => {

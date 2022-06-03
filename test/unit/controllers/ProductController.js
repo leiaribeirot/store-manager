@@ -5,11 +5,10 @@ const ProductController = require('../../../controllers/ProductController');
 const ProductService = require('../../../services/ProductService');
 
 const mockProducts = [{id: 1, name:'Martelo de Thor', quantity: '10'}];
-// const mockNewProduct = { id: 1, name: 'New Product', quantity: 10 };
 const req = {};
 const res = {};
 
-describe.only('Product Controller', () => {
+describe('Product Controller', () => {
 
     describe('Se a função getAll quando executada', () => { 
         before(() => {
@@ -90,7 +89,7 @@ describe.only('Product Controller', () => {
             res.json = sinon.stub().returns();
 
             sinon.stub(ProductService, 'getServiceById').resolves([]);
-            sinon.stub(ProductService, 'updateProduct').resolves({error: 'Product not found'});
+            sinon.stub(ProductService, 'updateProduct').resolves(false);
         });
 
         after(() => {

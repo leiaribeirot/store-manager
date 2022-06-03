@@ -9,7 +9,7 @@ describe('Product Service', () => {
    
     describe('Se a função getServiceAll quando executada', () => {
         before(() => {
-            const result = [[mockProducts]];
+            const result = [mockProducts];
             sinon.stub(connection, 'execute').resolves(result);
         });
     
@@ -62,8 +62,8 @@ describe('Product Service', () => {
         });
 
         it('verifica se o produto já existe', async () => {
-            const response = await ProductService.createProduct({name: 'product', quantity:  10});
-            expect(response.error).to.equals('Product already exists');
+            const response = await ProductService.createProduct(mockProducts);
+            expect(response).to.false;
         });
     });
 

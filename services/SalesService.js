@@ -1,5 +1,4 @@
 const salesModel = require('../models/SalesModel');
-// const { salesAllCamelCase } = require('../utils/salesUtil');
 
 const salesAllCamelCase = ({ id: saleId, product_id: productId, quantity, date }) => {
     const salesCamelCase = {
