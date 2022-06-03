@@ -1,15 +1,13 @@
-const salesAllCamelCase = (sale) => {
-    const { id: saleId, product_id: productId, quantity, date } = sale;
+// const salesAllCamelCase = ({ id: saleId, product_id: productId, quantity, date }) => {
+//     const salesCamelCase = {
+//         saleId,
+//         productId,
+//         quantity,
+//         date,
+//     };
+//     return salesCamelCase;
+// };
 
-    const salesCamelCase = {
-        saleId,
-        productId,
-        quantity,
-        date,
-    };
-    return salesCamelCase;
-};
-
-module.exports = {
-    salesAllCamelCase,
-};
+// module.exports = {
+//     salesAllCamelCase,
+// };

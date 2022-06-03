@@ -1,5 +1,15 @@
 const salesModel = require('../models/SalesModel');
-const { salesAllCamelCase } = require('../utils/salesUtil');
+// const { salesAllCamelCase } = require('../utils/salesUtil');
+
+const salesAllCamelCase = ({ id: saleId, product_id: productId, quantity, date }) => {
+    const salesCamelCase = {
+        saleId,
+        productId,
+        quantity,
+        date,
+    };
+    return salesCamelCase;
+};
 
 const getServiceAll = async () => {
     const [sales] = await salesModel.getSalesAll();
@@ -42,4 +52,5 @@ module.exports = {
     getServiceById,
     createSales,
     updateSales,
+    salesAllCamelCase,
 };

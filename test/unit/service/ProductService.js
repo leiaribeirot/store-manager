@@ -5,7 +5,7 @@ const ProductService = require('../../../services/ProductService');
 
 const mockProducts = [[{id: 1, name: 'product', quantity:  10}]];
 
-describe.only('ProductService', () => {
+describe.only('Product Service', () => {
    
     describe('Se a função getServiceAll quando executada', () => {
         before(() => {
