@@ -18,6 +18,7 @@ const getServiceAll = async () => {
 
 const getServiceById = async (id) => {
     const [sales] = await salesModel.getSalesById(id);
+
     const formatSalesById = sales.map(salesAllCamelCase);
     return formatSalesById;
 };
@@ -46,10 +47,22 @@ const updateSales = async (id, product) => {
     };
 };
 
+const deleteSales = async (id) => {
+   const saleId = await getServiceById(id);
+
+    if (!saleId.length) return false;
+
+    await salesModel.deleteSales(id);
+    await salesModel.deleteSaleProducts(id);
+
+    return true;
+};
+
 module.exports = {
     getServiceAll,
     getServiceById,
     createSales,
     updateSales,
     salesAllCamelCase,
+    deleteSales,
 };
