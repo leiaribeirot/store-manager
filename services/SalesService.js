@@ -1,4 +1,6 @@
 const salesModel = require('../models/SalesModel');
+const productModel = require('../models/ProductModel');
+const salesProductModel = require('../models/SalesProductModels');
 
 const salesAllCamelCase = ({ id: saleId, product_id: productId, quantity, date }) => {
     const salesCamelCase = {
@@ -30,6 +32,11 @@ const createSales = async (sales) => {
     await Promise.all(sales.map(({ quantity, productId }) => 
     salesModel.createSales(quantity, productId, insertId)));
 
+    await Promise.all(
+        sales.map(({ productId, quantity }) => 
+            productModel.updateQuantity(productId, quantity, '-')),
+    );
+
     return {
         id: insertId,
         itemsSold: sales,
@@ -48,6 +55,14 @@ const updateSales = async (id, product) => {
 };
 
 const deleteSales = async (id) => {
+   const [salesResume] = await salesProductModel.getResumeSalesById(id);
+
+   await Promise.all(
+    salesResume.map(({ product_id, quantity }) =>
+        productModel.updateQuantity(product_id, quantity, '+')),
+
+   );
+
    const saleId = await getServiceById(id);
 
     if (!saleId.length) return false;

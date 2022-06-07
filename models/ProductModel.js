@@ -14,6 +14,9 @@ connection.execute('UPDATE products SET name = ?, quantity = ? WHERE id = ?', [n
 
 const deleteProduct = (id) => connection.execute('DELETE FROM products WHERE id = ?', [id]);
 
+const updateQuantity = (id, quantity, type) =>
+connection.execute(`UPDATE products SET quantity = quantity ${type} ${quantity} WHERE id = ${id}`);
+
 module.exports = { 
     getProductAll, 
     getProductById,
@@ -21,4 +24,5 @@ module.exports = {
     createProduct,
     updateProduct,
     deleteProduct,
+    updateQuantity,
  };
