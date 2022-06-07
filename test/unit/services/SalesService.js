@@ -4,7 +4,7 @@ const connection = require('../../../db/connection');
 const SalesService = require('../../../services/SalesService');
 const SalesModel = require('../../../models/SalesModel');
 
-const sales = [{ id: 1, date: '2022-06-03T17:36:22.000Z', product_id: 1, quantity: 5 }]
+const sales = [{ id: 1, date: '2022-06-03T17:36:22.000Z', product_id: 1, quantity: 5, }]
 const salesById = [{ date: '2022-06-03T17:36:22.000Z', product_id: 1, quantity: 5 }]
 const productsToSale = [{ productId: 1, quantity: 2 }];
 
@@ -38,7 +38,6 @@ describe('Sales Service', () => {
             expect(response).to.have.property('date');
             expect(response).to.have.property('productId');
             expect(response).to.have.property('quantity');
-
         });
     });
 
@@ -65,7 +64,11 @@ describe('Sales Service', () => {
 
     describe('Se a função createSales quando executada',  () => {
         before(() => {
-            sinon.stub(connection, 'execute').resolves([{ product_id: 1, quantity: 0 }]);
+            sinon.stub(connection, 'execute')
+            .onFirstCall()
+            .resolves([[{ product_id: 1, quantity: 2 }], []])
+            .onSecondCall()
+            .resolves([{ insertId: 3 }, []]);
         });
     
         after(() => {

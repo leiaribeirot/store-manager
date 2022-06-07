@@ -72,14 +72,14 @@ describe('Sales Controller', () => {
             sinon.restore();
         });
         
-        it('retorna status corde "404" quando a venda não é encontrada', async () => {
+        it('retorna status corde "422" quando não é permitido vender', async () => {
             await SalesController.createSales(req, res);
-            expect(res.status.calledWith(StatusCodes.NOT_FOUND)).to.be.true;
+            expect(res.status.calledWith(StatusCodes.UNPROCESSABLE_ENTITY)).to.be.true;
         });
 
-        it('retorna a mensagem correta quando a venda não é encontrada', async () => {
+        it('retorna a mensagem correta quando não é permitido vender', async () => {
             await SalesController.createSales(req, res);
-            expect(res.json.calledWith({ message: 'Sale not found' })).to.be.true;
+            expect(res.json.calledWith({ message: 'Such amount is not permitted to sell' })).to.be.true;
         });
     });
 

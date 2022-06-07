@@ -19,7 +19,8 @@ const createSales = async (req, res, _next) => {
     const sales = await salesService.createSales(req.body);
 
     if (!sales) {
-        return res.status(StatusCodes.NOT_FOUND).json({ message: 'Sale not found' });
+        return res.status(StatusCodes.UNPROCESSABLE_ENTITY)
+        .json({ message: 'Such amount is not permitted to sell' });
     }
 
     res.status(StatusCodes.CREATED).json(sales);

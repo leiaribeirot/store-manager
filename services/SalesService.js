@@ -25,22 +25,29 @@ const getServiceById = async (id) => {
     return formatSalesById;
 };
 
-const createSales = async (sales) => {
+const createSales = async (products) => {
+    const validateQuantity = await Promise.all(
+        products.map(async ({ productId, quantity }) => {
+          const [product] = await productModel.getProductById(productId);
+          if (product[0].quantity < quantity) return false;
+          return true;
+        }),
+    );
+
+    if (validateQuantity.includes(false)) return false;
+
     const [sale] = await salesModel.insertSales();
     const { insertId } = sale;
 
-    await Promise.all(sales.map(({ quantity, productId }) => 
+    await Promise.all(products.map(({ quantity, productId }) => 
     salesModel.createSales(quantity, productId, insertId)));
 
     await Promise.all(
-        sales.map(({ productId, quantity }) => 
+        products.map(({ productId, quantity }) => 
             productModel.updateQuantity(productId, quantity, '-')),
     );
 
-    return {
-        id: insertId,
-        itemsSold: sales,
-    };
+    return { id: insertId, itemsSold: products };
 };
 
 const updateSales = async (id, product) => {
